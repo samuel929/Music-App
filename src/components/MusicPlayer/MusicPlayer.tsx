@@ -117,7 +117,7 @@ const MusicPlayer = () => {
                 max={duration}
                 value={currentTime}
                 onChange={handleSeek}
-                className='w-full h-1 bg-gray-600 rounded-lg appearance-none cursor-pointer'
+                className='w-full h-1  bg-gradient-to-r from-custom-pink to-custom-purple rounded-lg appearance-none cursor-pointer'
               />
             </div>
             <span className='text-xs mt-2'>{formatTime(duration)}</span>
@@ -132,7 +132,7 @@ const MusicPlayer = () => {
               step='0.01'
               value={volume}
               onChange={handleVolumeChange}
-              className='w-24 h-1 bg-gray-600 rounded-lg appearance-none cursor-pointer'
+              className='w-24 h-1  bg-gradient-to-r from-custom-pink to-custom-purple rounded-lg appearance-none cursor-pointer'
             />
           </div>
         </div>
