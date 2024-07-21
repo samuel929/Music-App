@@ -74,7 +74,7 @@ export function FileTreeDemo() {
                 }`}
                 href='/SoundKits'
               >
-                <File value='9'>SoundKits.mp4</File>
+                <File value='9'>SoundKits.zip</File>
               </Link>
             </Folder>
             <Link
