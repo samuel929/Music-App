@@ -1,9 +1,12 @@
+"use client";
 import { File, Folder, Tree } from "@/components/magicui/file-tree";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { CiLock } from "react-icons/ci";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
-
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 export function FileTreeDemo() {
+  const pathname = usePathname();
   return (
     <div className='relative flex h-[300px]  flex-col items-center justify-center '>
       <Tree
@@ -26,41 +29,91 @@ export function FileTreeDemo() {
       >
         <Folder element='src' value='1'>
           <Folder value='2' element='Profile'>
-            <File value='3'>
-              <p>Discovery.docx</p>
-            </File>
-            <File value='4'>
-              <p>Dashboard.docx</p>
-            </File>
+            <Link
+              className={` ${
+                pathname === "/"
+                  ? "bg-gradient-to-r from-custom-pink to-custom-purple rounded"
+                  : ""
+              }`}
+              href='/'
+            >
+              <File value='3'>Discovery.docx</File>
+            </Link>
+            <Link
+              className={` ${
+                pathname === "/dashboard"
+                  ? "bg-gradient-to-r from-custom-pink to-custom-purple rounded"
+                  : ""
+              }`}
+              href='/dashboard'
+            >
+              <File value='4'>Dashboard.docx</File>
+            </Link>
           </Folder>
           <Folder value='5' element='Music Folder'>
             <Folder value='6' element='Leaks'>
-              <File value='7'>
-                <p>Leaks.mp4</p>
-              </File>
+              <Link
+                className={` ${
+                  pathname === "/leaks"
+                    ? "bg-gradient-to-r from-custom-pink to-custom-purple rounded"
+                    : ""
+                }`}
+                href='/leaks'
+              >
+                <File value='7'>Leaks.mp4</File>
+              </Link>
             </Folder>
-            <File value='8'>
-              <p>Beats.mp4</p>
-            </File>
-            <File value='9'>
-              <p>Music.mp4</p>
-            </File>
+            <Link
+              className={` ${
+                pathname === "/beats"
+                  ? "bg-gradient-to-r from-custom-pink to-custom-purple rounded"
+                  : ""
+              }`}
+              href='/beats'
+            >
+              <File value='8'>
+                <p>Beats.mp4</p>
+              </File>
+            </Link>
+            <Link
+              className={` ${
+                pathname === "/music"
+                  ? "bg-gradient-to-r from-custom-pink to-custom-purple rounded"
+                  : ""
+              }`}
+              href='/music'
+            >
+              <File value='9'>
+                <p>Music.mp4</p>
+              </File>
+            </Link>
           </Folder>
-          <Folder value='10' element='hidden'>
-            <File value='11'>
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <span className='flex'>
-                      Locked music <CiLock className='relative top-1' />
-                    </span>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>Exclusive Music and Beats can only be bought here 🤑</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            </File>
+          <Folder value='10' element='Hidden'>
+            <Link
+              className={` ${
+                pathname === "/PremiumMusic"
+                  ? "bg-gradient-to-r from-custom-pink to-custom-purple rounded"
+                  : ""
+              }`}
+              href='/PremiumMusic'
+            >
+              <File value='11'>
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <span className='flex'>
+                        Locked music <CiLock className='relative top-1' />
+                      </span>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>
+                        Exclusive Music and Beats can only be bought here 🤑
+                      </p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </File>
+            </Link>
           </Folder>
         </Folder>
       </Tree>

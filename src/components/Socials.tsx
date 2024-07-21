@@ -387,6 +387,12 @@ const Icons = {
     </svg>
   ),
   user: () => (
-    <Image src={Dices} width={100} height={100} className='rounded' />
+    <Image
+      src={Dices}
+      width={100}
+      height={100}
+      className='rounded'
+      alt='user'
+    />
   ),
 };

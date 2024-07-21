@@ -1,12 +1,8 @@
-import { DockDemo } from "@/components/MenuSocialIcons";
-import MusicLayout from "@/components/MusicLayout";
+"use client";
 
+import MusicLayout from "@/components/MusicLayout";
+import { useRenderLayoutDisplay } from "../hooks/useRenderLayoutDisplay";
 export default function Home() {
-  return (
-    <MusicLayout>
-      <div className='flex justify-end'>
-        <DockDemo />
-      </div>
-    </MusicLayout>
-  );
+  const layout = useRenderLayoutDisplay();
+  return <MusicLayout>{layout}</MusicLayout>;
 }
