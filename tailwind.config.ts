@@ -18,7 +18,9 @@ const config = {
       },
     },
     extend: {
-
+      backgroundImages: {
+        'card-gradient': 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)',
+      },
       boxShadow: {
         'spotify': '0 2px 4px 0 rgba(0, 0, 0, .1), 0 2px 10px 0 rgba(0, 0, 0, .1), 0 2px 20px 0 rgba(30, 215, 96, 0.3)',
 
@@ -41,10 +43,20 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-100% - var(--gap)))" },
+        },
+        "marquee-vertical": {
+          from: { transform: "translateY(0)" },
+          to: { transform: "translateY(calc(-100% - var(--gap)))" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        marquee: "marquee var(--duration) linear infinite",
+        "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
       },
     },
   },

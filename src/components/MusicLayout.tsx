@@ -8,11 +8,6 @@ import MenuItem from "./MenuItem";
 import MusicPlayer from "./MusicPlayer/MusicPlayer";
 import { DockDemo } from "./MenuSocialIcons";
 
-/**
- *
- * @meg https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExczVrb2NqOHF0dDRqOXo4ZXY5azliMmdzbzQ3eGx0djc1NWtuNndyYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/RinURJeOT0DUFJajMM/giphy.webp
- * @Tpain https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExeW5qNW42Z3EyZXhneGdmbXJtYmlhMmtqbDl6ZnBvcXlyZzZkNGV2eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/6f8MqDyHNtqTvI66wT/giphy.webp
- */
 const MusicLayout = ({ children }: { children: ReactNode }) => {
   return (
     <div className='relative min-h-screen overflow-hidden'>
@@ -47,11 +42,13 @@ const MusicLayout = ({ children }: { children: ReactNode }) => {
                 <DockDemo />
               </div>
 
-              <div className='pl-8 relative -top-24 py-11'> {children}</div>
+              <div className='pl-8 relative -top-36 py-11'> {children}</div>
             </div>
           </div>
         </div>
-        <MusicPlayer />
+        <div className='fixed bottom-0 left-0 right-0 z-50'>
+          <MusicPlayer />
+        </div>
       </div>
     </div>
   );

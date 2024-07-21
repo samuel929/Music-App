@@ -8,9 +8,9 @@ import { usePathname } from "next/navigation";
 export function FileTreeDemo() {
   const pathname = usePathname();
   return (
-    <div className='relative flex h-[300px]  flex-col items-center justify-center '>
+    <div className='relative flex h-[400px]   flex-col items-center justify-center '>
       <Tree
-        className='p-2 overflow-hidden '
+        className='p-2 overflow-hidden max-w-[275px] '
         initialSelectedId='7'
         initialExpandedItems={[
           "1",
@@ -24,6 +24,8 @@ export function FileTreeDemo() {
           "9",
           "10",
           "11",
+          "12",
+          "13",
         ]}
         elements={ELEMENTS}
       >
@@ -50,7 +52,7 @@ export function FileTreeDemo() {
               <File value='4'>Dashboard.docx</File>
             </Link>
           </Folder>
-          <Folder value='5' element='Music Folder'>
+          <Folder value='5' element='Music'>
             <Folder value='6' element='Leaks'>
               <Link
                 className={` ${
@@ -63,6 +65,18 @@ export function FileTreeDemo() {
                 <File value='7'>Leaks.mp4</File>
               </Link>
             </Folder>
+            <Folder value='8' element='SoundKits'>
+              <Link
+                className={` ${
+                  pathname === "/SoundKits"
+                    ? "bg-gradient-to-r from-custom-pink to-custom-purple rounded"
+                    : ""
+                }`}
+                href='/SoundKits'
+              >
+                <File value='9'>SoundKits.mp4</File>
+              </Link>
+            </Folder>
             <Link
               className={` ${
                 pathname === "/beats"
@@ -71,7 +85,7 @@ export function FileTreeDemo() {
               }`}
               href='/beats'
             >
-              <File value='8'>
+              <File value='10'>
                 <p>Beats.mp4</p>
               </File>
             </Link>
@@ -83,12 +97,12 @@ export function FileTreeDemo() {
               }`}
               href='/music'
             >
-              <File value='9'>
+              <File value='11'>
                 <p>Music.mp4</p>
               </File>
             </Link>
           </Folder>
-          <Folder value='10' element='Hidden'>
+          <Folder value='12' element='Hidden'>
             <Link
               className={` ${
                 pathname === "/PremiumMusic"
@@ -97,7 +111,7 @@ export function FileTreeDemo() {
               }`}
               href='/PremiumMusic'
             >
-              <File value='11'>
+              <File value='13'>
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
