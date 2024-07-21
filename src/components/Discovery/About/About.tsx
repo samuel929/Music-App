@@ -6,7 +6,7 @@ const About = () => {
     <div className='h-full w-full max-w-[32rem] items-center justify-center overflow-hidden pt-8'>
       <BoxReveal boxColor={"#5046e6"} duration={0.5}>
         <p className='text-[3.5rem] font-semibold'>
-          DicesTheHeator
+          DiCesTheHeater
           <span className='text-transparent bg-clip-text bg-gradient-to-r from-custom-pink to-custom-purple'>
             .
           </span>
