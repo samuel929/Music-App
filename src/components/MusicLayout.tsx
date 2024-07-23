@@ -38,11 +38,11 @@ const MusicLayout = ({ children }: { children: ReactNode }) => {
 
           <div className='flex-1 flex flex-col'>
             <div className='flex-1'>
-              <div className='flex justify-end'>
+              {/* <div className='flex justify-end'>
                 <DockDemo />
-              </div>
+              </div> */}
 
-              <div className='pl-8 relative -top-36 py-11'> {children}</div>
+              <div className='pl-8 relative'> {children}</div>
             </div>
           </div>
         </div>

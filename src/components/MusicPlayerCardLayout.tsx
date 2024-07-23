@@ -5,12 +5,21 @@ import { Canvas } from "@react-three/fiber";
 import Equalizer from "./Equalizer";
 import { FaPlay } from "react-icons/fa";
 import { FaPause } from "react-icons/fa";
+import LockedIcon from "@/components/PremuimMusicIcon";
+import {
+  TooltipProvider,
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "@radix-ui/react-tooltip";
+import { Button } from "./ui/button";
 interface Props {
   trackNumber: string;
   trackName: string;
   trackDuration: string;
   trackUrl: string;
   albumArt: string;
+  locked?: boolean;
 }
 
 const MusicPlayer = ({
@@ -19,6 +28,7 @@ const MusicPlayer = ({
   trackDuration,
   trackUrl,
   albumArt,
+  locked,
 }: Props) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(new Audio(trackUrl));
@@ -33,7 +43,7 @@ const MusicPlayer = ({
   };
 
   return (
-    <div className='flex items-center max-w-[700px] cursor-pointer bg-black/50 backdrop-blur-md p-4 rounded-md text-white'>
+    <div className='flex items-center max-w-full cursor-pointer bg-black/50 backdrop-blur-md p-4 rounded-md text-white'>
       <div className='text-2xl mr-4'>{trackNumber}</div>
       <div className='w-12 h-12 mr-4'>
         <img src={albumArt} alt={trackName} className='rounded-full' />
@@ -48,16 +58,33 @@ const MusicPlayer = ({
             <Equalizer isPlaying={isPlaying} />
           </Canvas>
         </div>
-        <button
-          onClick={togglePlay}
-          className='ml-4 p-2 flex flex-col justify-center items-center bg-gradient-to-r from-custom-pink to-custom-purple w-9 h-9  rounded-full'
-        >
-          {isPlaying ? (
-            <FaPause className='relative' />
-          ) : (
-            <FaPlay className='relative' />
-          )}
-        </button>
+        {locked ? (
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <div className=' p-2 flex flex-col justify-center items-center'>
+                  <LockedIcon />
+                </div>
+              </TooltipTrigger>
+              <TooltipContent className='relative right-11'>
+                <p className=' bg-gradient-to-r from-custom-pink to-custom-purple rounded-md text-white p-2'>
+                  Song locked and can only be bought
+                </p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        ) : (
+          <button
+            onClick={togglePlay}
+            className='ml-4 p-2 flex flex-col justify-center items-center bg-gradient-to-r from-custom-pink to-custom-purple w-9 h-9  rounded-full'
+          >
+            {isPlaying ? (
+              <FaPause className='relative' />
+            ) : (
+              <FaPlay className='relative' />
+            )}
+          </button>
+        )}
       </div>
     </div>
   );

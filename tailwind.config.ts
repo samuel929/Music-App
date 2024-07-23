@@ -18,6 +18,10 @@ const config = {
       },
     },
     extend: {
+      clipPath: {
+        'circle-150': 'circle(150px at 80% 20%)',
+        'circle-300': 'circle(300px at 80% -20%)',
+      },
       backgroundImages: {
         'card-gradient': 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)',
       },

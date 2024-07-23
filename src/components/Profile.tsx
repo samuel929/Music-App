@@ -26,6 +26,8 @@ export function FileTreeDemo() {
           "11",
           "12",
           "13",
+          "14",
+          "15",
         ]}
         elements={ELEMENTS}
       >
@@ -65,7 +67,7 @@ export function FileTreeDemo() {
                 <File value='7'>Leaks.mp4</File>
               </Link>
             </Folder>
-            <Folder value='8' element='SoundKits'>
+            <Folder value='8' element='Beats'>
               <Link
                 className={` ${
                   pathname === "/SoundKits"
@@ -76,19 +78,20 @@ export function FileTreeDemo() {
               >
                 <File value='9'>SoundKits.zip</File>
               </Link>
+              <Link
+                className={` ${
+                  pathname === "/beats"
+                    ? "bg-gradient-to-r from-custom-pink to-custom-purple rounded"
+                    : ""
+                }`}
+                href='/beats'
+              >
+                <File value='10'>
+                  <p>Beats.mp4</p>
+                </File>
+              </Link>
             </Folder>
-            <Link
-              className={` ${
-                pathname === "/beats"
-                  ? "bg-gradient-to-r from-custom-pink to-custom-purple rounded"
-                  : ""
-              }`}
-              href='/beats'
-            >
-              <File value='10'>
-                <p>Beats.mp4</p>
-              </File>
-            </Link>
+
             <Link
               className={` ${
                 pathname === "/music"
@@ -129,6 +132,18 @@ export function FileTreeDemo() {
               </File>
             </Link>
           </Folder>
+        </Folder>
+        <Folder value='14' element='Merch'>
+          <Link
+            className={` ${
+              pathname === "/merch"
+                ? "bg-gradient-to-r from-custom-pink to-custom-purple rounded"
+                : ""
+            }`}
+            href='/merch'
+          >
+            <File value='15'>Store.txt</File>
+          </Link>
         </Folder>
       </Tree>
     </div>

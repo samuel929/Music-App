@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import Beats from "@/app/beats/page";
 import Music from "@/app/music/page";
 import PremiumMusic from "@/app/PremiumMusic/page";
+import Merch from "@/app/merch/page";
 
 export const useRenderLayoutDisplay = () => {
   const pathname = usePathname();
@@ -25,6 +26,8 @@ export const useRenderLayoutDisplay = () => {
         return <Music />;
       case "/PremiumMusic":
         return <PremiumMusic />;
+      case "/merch":
+        return <Merch />;
       default:
         return null;
     }
