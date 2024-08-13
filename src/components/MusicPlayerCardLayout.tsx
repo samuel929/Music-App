@@ -30,19 +30,24 @@ const MusicPlayer = ({
   locked,
 }: Props) => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef(new Audio(trackUrl));
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   const togglePlay = () => {
-    if (isPlaying) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play();
+    const audio = audioRef.current;
+
+    if (audio) {
+      if (isPlaying) {
+        audio.pause();
+      } else {
+        audio.play();
+      }
+      setIsPlaying(!isPlaying);
     }
-    setIsPlaying(!isPlaying);
   };
 
   return (
     <div className='flex flex-col sm:flex-row items-center w-full bg-black/50 backdrop-blur-md p-4 rounded-md text-white'>
+      <audio ref={audioRef} src={trackUrl} preload='metadata' />
       <div className='text-xl sm:text-2xl mr-0 sm:mr-4 mb-2 sm:mb-0'>
         {trackNumber}
       </div>
