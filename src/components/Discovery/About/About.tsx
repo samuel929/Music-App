@@ -5,7 +5,7 @@ const About = () => {
   return (
     <div className='h-full w-full max-w-[32rem] items-center justify-center overflow-hidden pt-8'>
       <BoxReveal boxColor={"#5046e6"} duration={0.5}>
-        <p className='text-[3.5rem] font-semibold'>
+        <p className='text-[3.5rem] font-semibold text-lg sm:text-5xl '>
           DiCesTheHeater
           <span className='text-transparent bg-clip-text bg-gradient-to-r from-custom-pink to-custom-purple'>
             .
@@ -13,10 +13,10 @@ const About = () => {
         </p>
       </BoxReveal>
       <BoxReveal boxColor={"#5046e6"} duration={0.5}>
-        <h2 className='mt-[.5rem] text-[1rem]'>
+        <h2 className='mt-[.5rem] text-[1rem] text-sm sm:text-xl'>
           Born Lungelo Earl Hlabangane, is a trailblazing hip hop artist and
           music producer from{" "}
-          <span className='text-transparent bg-clip-text bg-gradient-to-r from-custom-pink to-custom-purple'>
+          <span className='text-transparent bg-clip-text bg-gradient-to-r from-custom-pink to-custom-purple text-sm sm:text-xl'>
             Nelspruit, Mpumalanga.
           </span>
         </h2>
@@ -24,9 +24,9 @@ const About = () => {
 
       <BoxReveal boxColor={"#5046e6"} duration={0.5}>
         <div className='mt-[1.5rem]'>
-          <p>
+          <p className='text-sm sm:text-xl'>
             Known for his innovative beats and production techniques,
-            <span className='font-semibold text-transparent bg-clip-text bg-gradient-to-r from-custom-pink to-custom-purple'>
+            <span className='font-semibold text-transparent bg-clip-text bg-gradient-to-r from-custom-pink to-custom-purple text-sm sm:text-xl'>
               {" "}
               DiCes has been shaping the sound of contemporary hip hop since his
               early teens.
@@ -35,7 +35,7 @@ const About = () => {
             quickly gaining recognition for his distinctive sound, which blends
             classic hip hop elements with modern influences. Today, DiCes
             continues to push the boundaries of the genre . <br />
-            <span className='font-semibold text-transparent bg-clip-text bg-gradient-to-r from-custom-pink to-custom-purple'>
+            <span className='font-semibold text-transparent bg-clip-text bg-gradient-to-r from-custom-pink to-custom-purple text-sm sm:text-xl'>
               -&gt; 100% Dope,Producer and MC .
             </span>{" "}
             <br />
@@ -44,7 +44,7 @@ const About = () => {
       </BoxReveal>
 
       <BoxReveal boxColor={"#5046e6"} duration={0.5}>
-        <Button className='mt-[1.6rem]  bg-gradient-to-r from-custom-pink to-custom-purple'>
+        <Button className='mt-[1.6rem]  bg-gradient-to-r from-custom-pink to-custom-purple text-sm sm:text-xl'>
           Discography Albums and EPs
         </Button>
       </BoxReveal>

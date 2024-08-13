@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 interface TProps {
   imageSrc: string;
   title: string;
@@ -9,11 +7,9 @@ interface TProps {
 const MusicCard = ({ imageSrc, title, trackCount }: TProps) => {
   return (
     <div className='relative w-48 h-48 rounded-lg overflow-hidden shadow-lg group'>
-      <Image
+      <img
         src={imageSrc}
         alt={title}
-        layout='fill'
-        objectFit='cover'
         className='transition-transform duration-300 group-hover:scale-110'
       />
       <div className='relative'>

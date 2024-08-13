@@ -1,12 +1,14 @@
-import Register from "@/components/Authentication/Authentication";
 import MusicLayout from "@/components/MusicLayout";
 import React from "react";
+import dynamic from "next/dynamic";
 
+const RegisterLoading = dynamic(
+  () => import("@/components/Authentication/Authentication")
+);
 const PremiumMusic = () => {
   return (
     <MusicLayout>
-      <p>Music</p>
-      <Register />
+      <RegisterLoading />
     </MusicLayout>
   );
 };

@@ -60,17 +60,21 @@ export default function Authentication() {
   };
 
   return (
-    <div className='bg-black/50 backdrop-blur-md p-10 rounded-md max-w-[500px] mx-auto mt-20 shadow-lg'>
-      <Tabs defaultValue='account' className='w-[400px]'>
-        <TabsList className='grid w-full grid-cols-2 mb-6'>
-          <TabsTrigger value='account'>Create Account</TabsTrigger>
-          <TabsTrigger value='login'>Login</TabsTrigger>
+    <div className='bg-black/50 backdrop-blur-md p-6 rounded-md max-w-full sm:max-w-md mx-auto mt-32 shadow-lg'>
+      <Tabs defaultValue='account' className='w-full'>
+        <TabsList className='grid w-full grid-cols-2 gap-4 mb-6'>
+          <TabsTrigger value='account' className='text-center py-2'>
+            Create Account
+          </TabsTrigger>
+          <TabsTrigger value='login' className='text-center py-2'>
+            Login
+          </TabsTrigger>
         </TabsList>
         <TabsContent value='account'>
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmitCreateAccount)}
-              className='space-y-8'
+              className='space-y-6'
             >
               <FormField
                 control={form.control}
@@ -82,7 +86,7 @@ export default function Authentication() {
                       <Input
                         placeholder='Username'
                         {...field}
-                        className='focus:outline-none'
+                        className='w-full focus:outline-none'
                       />
                     </FormControl>
                     <FormDescription>
@@ -101,7 +105,7 @@ export default function Authentication() {
                     <FormControl>
                       <Input
                         placeholder='name@example.com'
-                        className='focus:outline-none active:outline-none'
+                        className='w-full focus:outline-none active:outline-none'
                         {...field}
                       />
                     </FormControl>
@@ -120,13 +124,14 @@ export default function Authentication() {
                         type='password'
                         placeholder='Password'
                         {...field}
+                        className='w-full'
                       />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-              <Button type='submit' className='w-full'>
+              <Button type='submit' className='w-full py-2'>
                 Create Account
               </Button>
               <button
@@ -143,7 +148,7 @@ export default function Authentication() {
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmitLoginAccount)}
-              className='space-y-8'
+              className='space-y-6'
             >
               <FormField
                 control={form.control}
@@ -152,7 +157,11 @@ export default function Authentication() {
                   <FormItem>
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input placeholder='name@example.com' {...field} />
+                      <Input
+                        placeholder='name@example.com'
+                        className='w-full'
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -168,6 +177,7 @@ export default function Authentication() {
                       <Input
                         type='password'
                         placeholder='Password'
+                        className='w-full'
                         {...field}
                       />
                     </FormControl>
@@ -175,7 +185,7 @@ export default function Authentication() {
                   </FormItem>
                 )}
               />
-              <Button type='submit' className='w-full'>
+              <Button type='submit' className='w-full py-2'>
                 Login
               </Button>
               <button

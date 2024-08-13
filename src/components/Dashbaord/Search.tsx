@@ -15,7 +15,7 @@ const Search = ({ placeholder }: ISEARCHINPUT) => {
       />
       <input
         placeholder={placeholder}
-        className='bg-[#414141] opacity-65 placeholder:text-[#B8B8B8] border-2 border-[#414141] focus:outline-none py-3 pl-14 md:pl-20 pr-4 md:pr-12 w-full md:w-auto rounded-full'
+        className='bg-[#414141] opacity-65 placeholder:text-[#B8B8B8] border-2 border-[#414141] focus:outline-none py-3 pl-14 md:pl-20 pr-4 md:pr-12 w-full md:w-[700px] rounded-full'
       />
     </div>
   );

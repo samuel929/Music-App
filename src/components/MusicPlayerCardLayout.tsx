@@ -42,11 +42,11 @@ const MusicPlayer = ({
   };
 
   return (
-    <div className='flex flex-col sm:flex-row items-center max-w-full cursor-pointer bg-black/50 backdrop-blur-md p-4 rounded-md text-white'>
+    <div className='flex flex-col sm:flex-row items-center w-full bg-black/50 backdrop-blur-md p-4 rounded-md text-white'>
       <div className='text-xl sm:text-2xl mr-0 sm:mr-4 mb-2 sm:mb-0'>
         {trackNumber}
       </div>
-      <div className='w-12 h-12 sm:mr-4 mb-2 sm:mb-0'>
+      <div className='w-16 h-16 sm:w-20 sm:h-20 sm:mr-4 mb-2 sm:mb-0'>
         <img
           src={albumArt}
           alt={trackName}
@@ -60,7 +60,7 @@ const MusicPlayer = ({
         </div>
       </div>
       <div className='flex items-center justify-center sm:justify-end w-full sm:w-auto'>
-        <div className='w-16 h-10 sm:w-20 sm:h-12 mb-2 sm:mb-0'>
+        <div className='w-20 h-12 sm:w-24 sm:h-14 mb-2 sm:mb-0'>
           <Canvas>
             <Equalizer isPlaying={isPlaying} />
           </Canvas>
@@ -83,7 +83,7 @@ const MusicPlayer = ({
         ) : (
           <button
             onClick={togglePlay}
-            className='ml-0 sm:ml-4 p-2 flex flex-col justify-center items-center bg-gradient-to-r from-custom-pink to-custom-purple w-8 h-8 sm:w-9 sm:h-9 rounded-full'
+            className='ml-0 sm:ml-4 p-2 flex flex-col justify-center items-center bg-gradient-to-r from-custom-pink to-custom-purple w-8 h-8 sm:w-10 sm:h-10 rounded-full'
           >
             {isPlaying ? (
               <FaPause className='relative' />

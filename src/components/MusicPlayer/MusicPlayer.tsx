@@ -9,54 +9,74 @@ import { IoPauseSharp } from "react-icons/io5";
 import { ImNext2 } from "react-icons/im";
 import { IoVolumeHighOutline } from "react-icons/io5";
 
-const MusicPlayer = () => {
-  const [playPause, setPlayPause] = useState(false);
-  const [duration, setDuration] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [volume, setVolume] = useState(1);
+const MusicPlayer: React.FC = () => {
+  const [playPause, setPlayPause] = useState<boolean>(false);
+  const [duration, setDuration] = useState<number>(0);
+  const [currentTime, setCurrentTime] = useState<number>(0);
+  const [volume, setVolume] = useState<number>(1);
 
   const songUrl = "/message.mp3";
-  const audioRef = useRef(new Audio(songUrl));
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
     const audio = audioRef.current;
-    audio.addEventListener("loadedmetadata", () => {
-      setDuration(audio.duration);
-    });
-    audio.addEventListener("timeupdate", () => {
-      setCurrentTime(audio.currentTime);
-    });
-    audio.addEventListener("ended", () => {
+
+    const handleLoadedMetadata = () => {
+      if (audio) {
+        setDuration(audio.duration);
+      }
+    };
+
+    const handleTimeUpdate = () => {
+      if (audio) {
+        setCurrentTime(audio.currentTime);
+      }
+    };
+
+    const handleEnded = () => {
       setPlayPause(false);
       setCurrentTime(0);
-    });
+    };
+
+    audio?.addEventListener("loadedmetadata", handleLoadedMetadata);
+    audio?.addEventListener("timeupdate", handleTimeUpdate);
+    audio?.addEventListener("ended", handleEnded);
+
     return () => {
-      audio.removeEventListener("loadedmetadata", () => {});
-      audio.removeEventListener("timeupdate", () => {});
-      audio.removeEventListener("ended", () => {});
+      audio?.removeEventListener("loadedmetadata", handleLoadedMetadata);
+      audio?.removeEventListener("timeupdate", handleTimeUpdate);
+      audio?.removeEventListener("ended", handleEnded);
     };
   }, [songUrl]);
 
   const togglePlayPause = () => {
     const audio = audioRef.current;
-    if (playPause) {
-      audio.pause();
-    } else {
-      audio.play();
+    if (audio) {
+      if (playPause) {
+        audio.pause();
+      } else {
+        audio.play();
+      }
+      setPlayPause(!playPause);
     }
-    setPlayPause(!playPause);
   };
 
   const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newTime = Number(e.target.value);
-    audioRef.current.currentTime = newTime;
-    setCurrentTime(newTime);
+    const audio = audioRef.current;
+    if (audio) {
+      audio.currentTime = newTime;
+      setCurrentTime(newTime);
+    }
   };
 
   const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newVolume = Number(e.target.value);
-    audioRef.current.volume = newVolume;
-    setVolume(newVolume);
+    const audio = audioRef.current;
+    if (audio) {
+      audio.volume = newVolume;
+      setVolume(newVolume);
+    }
   };
 
   const formatTime = (time: number) => {
@@ -67,16 +87,17 @@ const MusicPlayer = () => {
 
   return (
     <div className='flex w-full h-[80px] bg-[#121212] bottom-0 shadow-md dark:shadow-lg dark:shadow-gray-900 z-10 absolute'>
+      <audio ref={audioRef} src={songUrl} preload='metadata' />
       <div className='flex w-full px-4 md:px-8 items-center justify-between space-x-4'>
         <div className='flex items-center space-x-4'>
           <Avatar>
             <AvatarImage
               src='https://i1.sndcdn.com/artworks-tIAYCsLuKjcgqdnf-tY8DIw-t500x500.jpg'
-              alt='@shadcn'
+              alt='Music Album Art'
             />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
-          <AnimatedShinyText className='inline-flex cursor-pointer items-center justify-center transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400'>
+          <AnimatedShinyText className='hidden sm:inline-flex text-xs cursor-pointer items-center justify-center transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400'>
             <span>MESSAGE IN A BOTTLE</span>
           </AnimatedShinyText>
         </div>
@@ -105,9 +126,7 @@ const MusicPlayer = () => {
           </button>
         </div>
         <div className='flex items-center space-x-4 w-full md:w-auto md:flex-grow'>
-          <span className='text-xs hidden md:block'>
-            {formatTime(currentTime)}
-          </span>
+          <span className='text-xs block'>{formatTime(currentTime)}</span>
           <input
             title='music range'
             type='range'
@@ -115,13 +134,11 @@ const MusicPlayer = () => {
             max={duration}
             value={currentTime}
             onChange={handleSeek}
-            className='w-full h-1 bg-gradient-to-r from-custom-pink to-custom-purple rounded-lg appearance-none cursor-pointer'
+            className=' h-1 bg-gradient-to-r from-custom-pink to-custom-purple rounded-lg appearance-none cursor-pointer'
           />
-          <span className='text-xs hidden md:block'>
-            {formatTime(duration)}
-          </span>
+          <span className='text-xs block'>{formatTime(duration)}</span>
         </div>
-        <div className='flex items-center space-x-2'>
+        <div className='items-center space-x-2 hidden sm:flex'>
           <IoVolumeHighOutline size={20} />
           <input
             title='volume'
