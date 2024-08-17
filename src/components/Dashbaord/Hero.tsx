@@ -66,7 +66,7 @@ const ArtistPage = () => {
           <div className='text-center md:text-left'>
             <div className='flex justify-center md:justify-start items-center gap-2 mb-2'>
               <Image
-                src='/verified.png'
+                src='/Verified.png'
                 alt='Verified'
                 height={30}
                 width={152}
