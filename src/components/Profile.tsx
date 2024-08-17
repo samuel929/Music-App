@@ -35,11 +35,11 @@ export function FileTreeDemo() {
           <Folder value='2' element='Profile'>
             <Link
               className={` ${
-                pathname === "/discovery"
+                pathname === "/"
                   ? "bg-gradient-to-r from-custom-pink to-custom-purple rounded"
                   : ""
               }`}
-              href='/discovery'
+              href='/'
             >
               <File value='4'>Discovery.docx</File>
             </Link>

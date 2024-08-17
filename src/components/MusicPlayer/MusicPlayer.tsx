@@ -22,7 +22,6 @@ const MusicPlayer: React.FC = () => {
 
   useEffect(() => {
     ShuffleTracks().then((data: any) => {
-      console.log(data);
       setTracks(data.tracks.sort(() => Math.random() - 0.5));
       setCurrentTrackIndex(0);
     });
@@ -171,7 +170,9 @@ const MusicPlayer: React.FC = () => {
             onChange={handleSeek}
             className=' h-1 bg-gradient-to-r from-custom-pink to-custom-purple rounded-lg appearance-none cursor-pointer'
           />
-          <span className='text-xs block'>{formatTime(duration)}</span>
+          <span className='text-xs hidden sm:block'>
+            {formatTime(duration)}
+          </span>
         </div>
         <div className='items-center space-x-2 hidden sm:flex'>
           <IoVolumeHighOutline size={20} />
