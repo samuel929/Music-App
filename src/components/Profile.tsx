@@ -45,42 +45,38 @@ export function FileTreeDemo() {
             </Link>
           </Folder>
           <Folder value='5' element='Music'>
-            <Folder value='6' element='Leaks'>
-              <Link
-                className={` ${
-                  pathname === "/leaks"
-                    ? "bg-gradient-to-r from-custom-pink to-custom-purple rounded"
-                    : ""
-                }`}
-                href='/leaks'
-              >
-                <File value='7'>Leaks.mp4</File>
-              </Link>
-            </Folder>
-            <Folder value='8' element='Beats'>
-              <Link
-                className={` ${
-                  pathname === "/SoundKits"
-                    ? "bg-gradient-to-r from-custom-pink to-custom-purple rounded"
-                    : ""
-                }`}
-                href='/SoundKits'
-              >
-                <File value='9'>SoundKits.zip</File>
-              </Link>
-              <Link
-                className={` ${
-                  pathname === "/beats"
-                    ? "bg-gradient-to-r from-custom-pink to-custom-purple rounded"
-                    : ""
-                }`}
-                href='/beats'
-              >
-                <File value='10'>
-                  <p>Beats.mp4</p>
-                </File>
-              </Link>
-            </Folder>
+            <Link
+              className={` ${
+                pathname === "/leaks"
+                  ? "bg-gradient-to-r from-custom-pink to-custom-purple rounded"
+                  : ""
+              }`}
+              href='/leaks'
+            >
+              <File value='7'>Leaks.mp4</File>
+            </Link>
+            <Link
+              className={` ${
+                pathname === "/SoundKits"
+                  ? "bg-gradient-to-r from-custom-pink to-custom-purple rounded"
+                  : ""
+              }`}
+              href='/SoundKits'
+            >
+              <File value='9'>SoundKits.zip</File>
+            </Link>
+            <Link
+              className={` ${
+                pathname === "/beats"
+                  ? "bg-gradient-to-r from-custom-pink to-custom-purple rounded"
+                  : ""
+              }`}
+              href='/beats'
+            >
+              <File value='10'>
+                <p>Beats.mp4</p>
+              </File>
+            </Link>
 
             <Link
               className={` ${
