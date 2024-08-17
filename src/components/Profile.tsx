@@ -35,23 +35,13 @@ export function FileTreeDemo() {
           <Folder value='2' element='Profile'>
             <Link
               className={` ${
-                pathname === "/"
+                pathname === "/discovery"
                   ? "bg-gradient-to-r from-custom-pink to-custom-purple rounded"
                   : ""
               }`}
-              href='/'
+              href='/discovery'
             >
-              <File value='3'>Discovery.docx</File>
-            </Link>
-            <Link
-              className={` ${
-                pathname === "/dashboard"
-                  ? "bg-gradient-to-r from-custom-pink to-custom-purple rounded"
-                  : ""
-              }`}
-              href='/dashboard'
-            >
-              <File value='4'>Dashboard.docx</File>
+              <File value='4'>Discovery.docx</File>
             </Link>
           </Folder>
           <Folder value='5' element='Music'>

@@ -53,7 +53,7 @@ const Equalizer: React.FC<EqualizerProps> = ({ isPlaying }) => {
       });
     } else {
       bars.current.forEach((bar) => {
-        bar.scale.y = 1.5; // Default height when not animating
+        bar.scale.y = 1.5;
       });
     }
   });

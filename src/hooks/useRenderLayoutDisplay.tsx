@@ -1,6 +1,6 @@
 // /src/hooks/useRenderLayoutDisplay.js
 
-import Dashboard from "../app/dashboard/page";
+import Dashboard from "../app/discovery/page";
 import Discovery from "@/components/Discovery/Discovery";
 import Leaks from "../app/leaks/page";
 import { usePathname } from "next/navigation";

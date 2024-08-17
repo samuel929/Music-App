@@ -10,9 +10,6 @@ import MenuItem from "./MenuItem";
 const MusicLayout = ({ children }: { children: ReactNode }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const toggleDrawer = () => {
-    setIsDrawerOpen(!isDrawerOpen);
-  };
   return (
     <div className='relative min-h-screen overflow-hidden'>
       <div className='absolute inset-0 z-0'>

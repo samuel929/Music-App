@@ -7,16 +7,18 @@ import React from "react";
 const Merch = () => {
   return (
     <MusicLayout>
-      <div className='flex flex-col items-center justify-center relative top-40 sm:top-[180px] sm:left-28'>
-        <div className='flex flex-col sm:flex-row items-center justify-between w-full max-w-[700px]'>
-          <Separator className='my-2 bg-gradient-to-r from-custom-pink to-custom-purple h-[5px] w-[150px] sm:w-[250px]' />
-          <p className='text-center my-4 sm:my-0'>COLLECTIONS</p>
-          <Separator className='my-2 bg-gradient-to-r from-custom-pink to-custom-purple h-[5px] w-[150px] sm:w-[250px]' />
+      <div className='flex flex-col items-center justify-center w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 lg:pt-32'>
+        <div className='flex flex-col sm:flex-row items-center justify-between w-full max-w-3xl mb-12'>
+          <Separator className='my-2 bg-gradient-to-r from-custom-pink to-custom-purple h-1 w-24 sm:w-40 lg:w-60' />
+          <p className='text-center my-4 sm:my-0 text-lg font-medium'>
+            COLLECTIONS
+          </p>
+          <Separator className='my-2 bg-gradient-to-r from-custom-pink to-custom-purple h-1 w-24 sm:w-40 lg:w-60' />
         </div>
-      </div>
 
-      <div className='relative pt-16 sm:pt-60 pr-4 sm:pr-60'>
-        <ProductContainer />
+        <div className='w-full'>
+          <ProductContainer />
+        </div>
       </div>
     </MusicLayout>
   );

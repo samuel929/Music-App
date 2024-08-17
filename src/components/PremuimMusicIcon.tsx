@@ -1,4 +1,3 @@
-// /components/LockedIcon.tsx
 import { FC } from "react";
 
 interface LockedIconProps {

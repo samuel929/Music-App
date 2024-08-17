@@ -22,17 +22,21 @@ const vapeProducts = [
 
 const Page: FC = () => {
   return (
-    <div className='flex justify-center items-center mb-16 sm:mb-40'>
-      <div className='bg-black/50 backdrop-blur-md p-6 sm:p-10 rounded-md w-full max-w-[1200px]'>
-        <h1 className='text-white text-xl sm:text-2xl mb-4 sm:mb-6 text-center sm:text-left'>
-          Vapes
-        </h1>
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
-          {vapeProducts.map((product) => (
-            <div className='p-4' key={product.id}>
-              <VapeProductCard {...product} />
+    <div className='min-h-screen bg-gradient-to-b from-gray-900 to-black py-8 px-4 sm:py-12 sm:px-6 lg:py-16 lg:px-8'>
+      <div className='max-w-7xl mx-auto'>
+        <div className='bg-black/50 backdrop-blur-md rounded-lg shadow-xl overflow-hidden'>
+          <div className='p-6 sm:p-8 md:p-10'>
+            <h1 className='text-white text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-center'>
+              Vapes
+            </h1>
+            <div className='grid grid-cols-1 sm:grid-cols-2 '>
+              {vapeProducts.map((product) => (
+                <div key={product.id} className='flex justify-center'>
+                  <VapeProductCard {...product} />
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </div>

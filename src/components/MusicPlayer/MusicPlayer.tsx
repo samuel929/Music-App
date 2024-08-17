@@ -8,15 +8,39 @@ import { ImPrevious2 } from "react-icons/im";
 import { IoPauseSharp } from "react-icons/io5";
 import { ImNext2 } from "react-icons/im";
 import { IoVolumeHighOutline } from "react-icons/io5";
+import { ShuffleTracks } from "@/app/lib/action";
+import { Tracks } from "@/app/lib/types";
 
 const MusicPlayer: React.FC = () => {
   const [playPause, setPlayPause] = useState<boolean>(false);
   const [duration, setDuration] = useState<number>(0);
   const [currentTime, setCurrentTime] = useState<number>(0);
   const [volume, setVolume] = useState<number>(1);
-
-  const songUrl = "/message.mp3";
+  const [tracks, setTracks] = useState<Tracks[]>([]);
+  const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const audioRef = useRef<HTMLAudioElement>(null);
+
+  useEffect(() => {
+    ShuffleTracks().then((data: any) => {
+      console.log(data);
+      setTracks(data.tracks.sort(() => Math.random() - 0.5));
+      setCurrentTrackIndex(0);
+    });
+  }, []);
+
+  const nextTrack = () => {
+    if (tracks.length > 0) {
+      setCurrentTrackIndex((prevIndex) => (prevIndex + 1) % tracks.length);
+    }
+  };
+
+  const previousTrack = () => {
+    if (tracks.length > 0) {
+      setCurrentTrackIndex(
+        (prevIndex) => (prevIndex - 1 + tracks.length) % tracks.length
+      );
+    }
+  };
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -36,18 +60,27 @@ const MusicPlayer: React.FC = () => {
     const handleEnded = () => {
       setPlayPause(false);
       setCurrentTime(0);
-    };
+      nextTrack();
 
-    audio?.addEventListener("loadedmetadata", handleLoadedMetadata);
-    audio?.addEventListener("timeupdate", handleTimeUpdate);
-    audio?.addEventListener("ended", handleEnded);
+      audio?.addEventListener("loadedmetadata", handleLoadedMetadata);
+      audio?.addEventListener("timeupdate", handleTimeUpdate);
+      audio?.addEventListener("ended", handleEnded);
 
-    return () => {
-      audio?.removeEventListener("loadedmetadata", handleLoadedMetadata);
-      audio?.removeEventListener("timeupdate", handleTimeUpdate);
-      audio?.removeEventListener("ended", handleEnded);
+      return () => {
+        audio?.removeEventListener("loadedmetadata", handleLoadedMetadata);
+        audio?.removeEventListener("timeupdate", handleTimeUpdate);
+        audio?.removeEventListener("ended", handleEnded);
+      };
     };
-  }, [songUrl]);
+  }, [tracks, currentTrackIndex]);
+
+  useEffect(() => {
+    if (audioRef.current && tracks.length > 0) {
+      audioRef.current.src = tracks[currentTrackIndex].audioFile.url;
+      audioRef.current.load();
+      if (playPause) audioRef.current.play();
+    }
+  }, [currentTrackIndex, tracks, playPause]);
 
   const togglePlayPause = () => {
     const audio = audioRef.current;
@@ -87,22 +120,23 @@ const MusicPlayer: React.FC = () => {
 
   return (
     <div className='flex w-full h-[80px] bg-[#121212] bottom-0 shadow-md dark:shadow-lg dark:shadow-gray-900 z-10 absolute'>
-      <audio ref={audioRef} src={songUrl} preload='metadata' />
+      <audio ref={audioRef} preload='metadata' />
       <div className='flex w-full px-4 md:px-8 items-center justify-between space-x-4'>
         <div className='flex items-center space-x-4'>
           <Avatar>
             <AvatarImage
-              src='https://i1.sndcdn.com/artworks-tIAYCsLuKjcgqdnf-tY8DIw-t500x500.jpg'
+              src={tracks[currentTrackIndex]?.albumArt.url || "default.jpg"}
               alt='Music Album Art'
             />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
           <AnimatedShinyText className='hidden sm:inline-flex text-xs cursor-pointer items-center justify-center transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400'>
-            <span>MESSAGE IN A BOTTLE</span>
+            <span>{tracks[currentTrackIndex]?.title || "No Title"}</span>
           </AnimatedShinyText>
         </div>
         <div className='flex items-center space-x-4'>
           <button
+            onClick={previousTrack}
             title='previous'
             className='text-gray-400 hover:text-white transition-colors'
           >
@@ -119,6 +153,7 @@ const MusicPlayer: React.FC = () => {
             )}
           </button>
           <button
+            onClick={nextTrack}
             title='next'
             className='text-gray-400 hover:text-white transition-colors'
           >

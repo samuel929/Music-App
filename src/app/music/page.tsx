@@ -7,96 +7,115 @@ import Search from "@/components/Dashbaord/Search";
 const Music = () => {
   const tracks = [
     {
+      id: 1,
       trackNumber: "01",
-      trackName: "Maroon 5 - Memories",
+      title: "Maroon 5 - Memories",
       trackDuration: "04:20",
       trackUrl: "/message.mp3",
       albumArt: "/dices.jpg",
       locked: false,
     },
     {
+      id: 2,
+
       trackNumber: "02",
-      trackName: "Maroon 5 - Memories",
+      title: "Maroon 5 - Memories",
       trackDuration: "04:20",
       trackUrl: "/message.mp3",
       albumArt: "/dices.jpg",
       locked: false,
     },
     {
+      id: 3,
+
       trackNumber: "03",
-      trackName: "Maroon 5 - Memories",
+      title: "Maroon 5 - Memories",
       trackDuration: "04:20",
       trackUrl: "/message.mp3",
       albumArt: "/dices.jpg",
       locked: true,
     },
     {
+      id: 5,
+
       trackNumber: "04",
-      trackName: "Maroon 5 - Memories",
+      title: "Maroon 5 - Memories",
       trackDuration: "04:20",
       trackUrl: "/message.mp3",
       albumArt: "/dices.jpg",
       locked: false,
     },
     {
+      id: 6,
+
       trackNumber: "05",
-      trackName: "Maroon 5 - Memories",
+      title: "Maroon 5 - Memories",
       trackDuration: "04:20",
       trackUrl: "/message.mp3",
       albumArt: "/dices.jpg",
       locked: true,
     },
     {
+      id: 7,
+
       trackNumber: "06",
-      trackName: "Maroon 5 - Memories",
+      title: "Maroon 5 - Memories",
       trackDuration: "04:20",
       trackUrl: "/message.mp3",
       albumArt: "/dices.jpg",
       locked: true,
     },
     {
+      id: 8,
+
       trackNumber: "01",
-      trackName: "Maroon 5 - Memories",
+      title: "Maroon 5 - Memories",
       trackDuration: "04:20",
       trackUrl: "/message.mp3",
       albumArt: "/dices.jpg",
       locked: false,
     },
     {
+      id: 9,
+
       trackNumber: "02",
-      trackName: "Maroon 5 - Memories",
+      title: "Maroon 5 - Memories",
       trackDuration: "04:20",
       trackUrl: "/message.mp3",
       albumArt: "/dices.jpg",
       locked: true,
     },
     {
+      id: 10,
       trackNumber: "03",
-      trackName: "Maroon 5 - Memories",
+      title: "Maroon 5 - Memories",
       trackDuration: "04:20",
       trackUrl: "/message.mp3",
       albumArt: "/dices.jpg",
       locked: false,
     },
     {
+      id: 11,
       trackNumber: "04",
-      trackName: "Maroon 5 - Memories",
+      title: "Maroon 5 - Memories",
       trackDuration: "04:20",
       trackUrl: "/message.mp3",
       albumArt: "/dices.jpg",
       locked: true,
     },
     {
+      id: 12,
       trackNumber: "05",
-      trackName: "Maroon 5 - Memories",
+      title: "Maroon 5 - Memories",
       trackDuration: "04:20",
       trackUrl: "/message.mp3",
       albumArt: "/dices.jpg",
       locked: false,
     },
     {
+      id: 13,
       trackNumber: "06",
-      trackName: "Maroon 5 - Memories",
+      title: "Maroon 5 - Memories",
       trackDuration: "04:20",
       trackUrl: "/message.mp3",
       albumArt: "/dices.jpg",
@@ -105,18 +124,16 @@ const Music = () => {
   ];
   return (
     <MusicLayout>
-      <div className='flex justify-center'>
+      <div className='flex justify-center mb-6'>
         <Search placeholder='Search Music...' />
       </div>
-      <ScrollAreaMusicAndBeats>
-        <div>
-          {tracks.map((track, index) => (
-            <div key={index} className='py-2'>
-              <MusicPlayer key={index} {...track} />
-            </div>
+      <>
+        <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6'>
+          {tracks.map((item, index) => (
+            <ScrollAreaMusicAndBeats key={index} {...item} />
           ))}
         </div>
-      </ScrollAreaMusicAndBeats>
+      </>
     </MusicLayout>
   );
 };
