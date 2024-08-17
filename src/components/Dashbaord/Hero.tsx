@@ -54,7 +54,7 @@ const ArtistPage = () => {
 
   return (
     <MusicLayout>
-      <main className='px-4 py-4 md:px-8'>
+      <main className='px-0 py-4 md:px-8'>
         <section className='flex flex-col md:flex-row items-center md:items-end gap-6 mb-6'>
           <Image
             src='/dicesBg.png'
